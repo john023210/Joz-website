@@ -1,0 +1,250 @@
+/* ========== BASE STYLES & RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #5a3921;
+    background: #fff9f0;
+}
+
+/* ========== NAVIGATION BAR ========== */
+nav {
+    background: #5a3921; /* Dark chocolate brown */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(90, 57, 33, 0.2);
+}
+
+nav h1 {
+    color: #fff;
+    font-size: 1.8rem;
+    font-family: 'Georgia', serif;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+nav a.active {
+    background: #d4a574; /* Gold highlight */
+    color: #5a3921;
+}
+
+/* ========== SECTION STYLES ========== */
+.section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #5a3921;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #d4a574;
+}
+
+/* ========== PRODUCT GRID ========== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(90, 57, 33, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(90, 57, 33, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-card h3 {
+    padding: 1rem 1rem 0.5rem;
+    font-size: 1.3rem;
+    color: #5a3921;
+}
+
+.product-card p {
+    padding: 0 1rem 1.5rem;
+    color: #7a5c3c;
+}
+
+/* ========== GALLERY/MOMENTS GRID ========== */
+.moments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.moment-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(90, 57, 33, 0.1);
+}
+
+.moment-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.moment-card figcaption {
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+    color: #7a5c3c;
+}
+
+/* ========== CONTACT PAGE STYLES ========== */
+.contact {
+    text-align: center;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(90, 57, 33, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ========== ABOUT PAGE SPECIFIC ========== */
+.about-story {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-story p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #7a5c3c;
+}
+
+/* ========== FOOTER (Add to all pages) ========== */
+footer {
+    background: #5a3921;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .section {
+        padding: 3rem 1rem;
+    }
+    
+    .section h2 {
+        font-size: 2rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+}

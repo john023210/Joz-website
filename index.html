@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Sweet-Joz Chocolate</title>
+
+    <!-- Google Fonts: Beautiful cursive fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      /* ========== VIDEO BACKGROUND ========== */
+      .video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        overflow: hidden;
+      }
+
+      #bg-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+      }
+
+      .video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(90, 57, 33, 0.7) 0%,
+          rgba(139, 90, 43, 0.6) 50%,
+          rgba(212, 165, 116, 0.4) 100%
+        );
+        z-index: -1;
+      }
+
+      /* ========== HERO SECTION ========== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 2rem;
+        position: relative;
+        margin-top: -80px;
+        padding-top: 10rem;
+      }
+
+      .hero h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 5rem;
+        font-weight: 700;
+        color: white;
+        text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1.5rem;
+        letter-spacing: 2px;
+      }
+
+      .hero-subtitle {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        color: #ffd8a6;
+        margin-bottom: 3rem;
+        max-width: 800px;
+        line-height: 1.6;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #d4a574, #ffc285);
+        color: #5a3921;
+        padding: 1.2rem 2.5rem;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(212, 165, 116, 0.6);
+        background: linear-gradient(135deg, #ffc285, #ffd8a6);
+      }
+
+      /* ========== SCROLL INDICATOR ========== */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        animation: bounce 2s infinite;
+      }
+
+      .scroll-indicator i {
+        font-size: 1.8rem;
+        display: block;
+        margin-top: 10px;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0) translateX(-50%);
+        }
+        40% {
+          transform: translateY(-10px) translateX(-50%);
+        }
+        60% {
+          transform: translateY(-5px) translateX(-50%);
+        }
+      }
+
+      /* ========== FEATURED PRODUCTS SECTION ========== */
+      .featured-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        margin: 4rem auto;
+        border-radius: 25px;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* ========== FALLBACK FOR NO VIDEO ========== */
+      .fallback-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          #5a3921 0%,
+          #8b5a2b 50%,
+          #d4a574 100%
+        );
+        z-index: -2;
+        display: none;
+      }
+
+      /* ========== RESPONSIVE DESIGN ========== */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          position: fixed;
+          top: 80px;
+          right: -100%;
+          background: rgba(90, 57, 33, 0.95);
+          backdrop-filter: blur(20px);
+          width: 250px;
+          height: 100vh;
+          padding: 2rem;
+          border-radius: 0;
+          transition: right 0.4s ease;
+          border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul.active {
+          right: 0;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.4rem;
+        }
+
+        nav h1 {
+          font-size: 2.2rem;
+        }
+
+        .menu-toggle {
+          display: block;
+          background: none;
+          border: none;
+          color: white;
+          font-size: 1.8rem;
+          cursor: pointer;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Video Background -->
+    <div class="video-container">
+      <video autoplay muted loop playsinline id="bg-video">
+        <source src="media/chocolate-video.mp4" type="video/mp4" />
+        <source src="media/chocolate-video.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+
+    <!-- Fallback Background -->
+    <div class="fallback-bg" id="fallbackBg"></div>
+
+    <!-- Modern Navigation -->
+    <nav id="navbar">
+      <h1>Sweet-Joz</h1>
+
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="navMenu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Moments</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Indulge in Chocolate Bliss</h1>
+      <p class="hero-subtitle">
+        Where every bite tells a story of passion, craftsmanship, and pure
+        delight
+      </p>
+      <a href="products.html" class="cta-button">Discover Our Flavors</a>
+
+      <div class="scroll-indicator">
+        <span>Explore More</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-section">
+      <h2
+        style="
+          font-family: 'Playfair Display', serif;
+          text-align: center;
+          font-size: 2.8rem;
+          color: #5a3921;
+          margin-bottom: 3rem;
+        "
+      >
+        Our Signature Collection
+      </h2>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="media/milk.jpg" alt="Sweet-Joz Milk Chocolate" />
+          <h3>Milk Chocolate Delight</h3>
+          <p>Creamy, smooth perfection with premium cocoa beans</p>
+          <span class="price">GH₵24.99</span>
+        </div>
+
+        <div class="product-card">
+          <img src="media/dark.jpg" alt="Sweet-Joz Dark Chocolate" />
+          <h3>Dark Chocolate Elegance</h3>
+          <p>Rich 70% cocoa with intense, sophisticated flavors</p>
+          <span class="price">GH₵26.99</span>
+        </div>
+
+        <div class="product-card">
+          <img src="media/white.jpg" alt="Sweet-Joz White Chocolate" />
+          <h3>White Chocolate Dream</h3>
+          <p>Silky vanilla-infused chocolate for pure indulgence</p>
+          <span class="price">GH₵27.99</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(90, 57, 33, 0.9),
+          rgba(139, 90, 43, 0.9)
+        );
+        color: white;
+        padding: 5rem 2rem;
+        text-align: center;
+        margin: 4rem 0;
+      "
+    >
+      <div style="max-width: 800px; margin: 0 auto">
+        <h2
+          style="
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+          "
+        >
+          Why Sweet-Joz?
+        </h2>
+        <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 3rem">
+          We don't just make chocolate – we craft experiences. Each piece is a
+          labor of love, blending traditional techniques with innovative flavors
+          to create moments worth savoring.
+        </p>
+        <a
+          href="about.html"
+          style="
+            display: inline-block;
+            background: white;
+            color: #5a3921;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.transform='scale(1.05)'"
+          onmouseout="this.style.transform='scale(1)'"
+        >
+          Our Story
+        </a>
+      </div>
+    </section>
+
+    <footer
+      style="
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        color: white;
+        text-align: center;
+        padding: 2.5rem;
+        margin-top: 4rem;
+      "
+    >
+      <p
+        style="
+          font-family: 'Dancing Script', cursive;
+          font-size: 1.8rem;
+          margin-bottom: 1rem;
+        "
+      >
+        Sweet-Joz Chocolate
+      </p>
+      <p>&copy; 2024 Sweet-Joz. All rights reserved.</p>
+      <p>Handcrafted with ❤️ in Ghana</p>
+    </footer>
+
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+        });
+      }
+
+      // Navbar Scroll Effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Video Fallback
+      const video = document.getElementById("bg-video");
+      const fallbackBg = document.getElementById("fallbackBg");
+
+      if (video) {
+        video.addEventListener("error", () => {
+          console.log("Video failed to load, showing fallback background");
+          if (fallbackBg) fallbackBg.style.display = "block";
+        });
+
+        // Try to play video
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            if (fallbackBg) fallbackBg.style.display = "block";
+          });
+        }
+
+        // Mobile video attributes
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+      }
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            if (navMenu.classList.contains("active")) {
+              navMenu.classList.remove("active");
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
